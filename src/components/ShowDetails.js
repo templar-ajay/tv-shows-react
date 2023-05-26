@@ -1,18 +1,18 @@
 import * as React from "react";
 
-export default function ShowDetails() {
+export default function ShowDetails({ id = 1929 }) {
   const [data, setData] = React.useState({});
   React.useEffect(() => {
-    fetch("https://api.tvmaze.com/shows/1929")
+    fetch("https://api.tvmaze.com/shows/" + id)
       .then((x) => x.json())
       .then((data) => setData(data));
-  }, []);
+  }, [id]);
   const { name, image, language, genres, runtime, premiered, rating, network } =
     data;
   return (
     <div className="container">
       <div className="left">
-        <img src={image.original} alt={name}></img>
+        {image?.original && <img src={image.original} alt={name}></img>}
       </div>
       <div className="right">
         {name && <h1>{name}</h1>}
