@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -7,15 +8,8 @@ import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/joy/Button";
-import { Box as JoyBox } from "@mui/joy/";
 
-{
-  /* <JoyBox sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
-  <Button>Button</Button>
-  <Button disabled>Disabled</Button>
-  <Button loading>Loading</Button>
-</JoyBox>; */
-}
+// loading, disabled
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -56,7 +50,20 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function SearchAppBar() {
+export default function SearchAppBar({ setResults }) {
+  const [searchInput, setSearchInput] = useState("");
+  function changeInput(event) {
+    setSearchInput(event.target.value);
+  }
+  function startSearch() {
+    fetch(`https://api.tvmaze.com/search/shows?q=${searchInput}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setResults(data);
+      });
+  }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -79,9 +86,11 @@ export default function SearchAppBar() {
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search…"
+              value={searchInput}
+              onInput={changeInput}
               inputProps={{ "aria-label": "search" }}
             />
-            <Button sx={{ margin: 0 }}>Search</Button>
+            <Button onClick={startSearch}>Search</Button>
           </Search>
         </Toolbar>
       </AppBar>

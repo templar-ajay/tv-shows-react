@@ -49,6 +49,13 @@ body {
 	font-family: 'Roboto', sans-serif;
 }
 
+.start-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:#B6EAFA
+}
+
 .main_card {
 	color: #fff;
 	width: 760px;
@@ -188,10 +195,6 @@ button:hover {
     opacity: 0;
 		}
 }
-
-
-
-
 
 /*  FOLLOW*/
 .Follow {	  background:url("https://pbs.twimg.com/profile_images/959092900708544512/v4Db9QRv_bigger.jpg")no-repeat center / contain;

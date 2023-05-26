@@ -1,6 +1,7 @@
 import React from "react";
 import Para from "./para";
 export default function Card({
+  id,
   name,
   language,
   genres,
@@ -33,12 +34,19 @@ export default function Card({
   };
   return (
     <>
-      <div class="wrapper">
-        <div class="main_card">
-          <div class="card_left">
-            <div class="card_details">
-              <h1>{name}</h1>
-              <div class="card_cat">
+      <div className="wrapper">
+        <div className="main_card">
+          <div className="card_left">
+            <div className="card_details">
+              <h1
+                onClick={() => {
+                  window.location.href =
+                    `http://localhost:3000/tv-shows/details/` + id;
+                }}
+              >
+                {name}
+              </h1>
+              <div className="card_cat">
                 {language && <p>{language}</p>}
                 {Boolean(genres.length) && (
                   <p>{genres && genres?.join(", ")} </p>
@@ -51,8 +59,8 @@ export default function Card({
               {summary && <Para>{summary}</Para>}
             </div>
           </div>
-          <div class="card_right">
-            <div class="img_container">
+          <div className="card_right">
+            <div className="img_container">
               {image?.medium && <img src={image.medium} alt={name} />}
             </div>
           </div>
