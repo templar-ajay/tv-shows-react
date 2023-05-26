@@ -1,8 +1,10 @@
-import TVShows from "./components/tvShows";
+// import TVShowsList from "./components/tvShowsList";
 import "./App.css";
+import ShowDetails from "./components/ShowDetails";
 
 function App() {
-  return <TVShows />;
+  // return <TVShowsList />;
+  return <ShowDetails />;
 }
 
 export default App;
