@@ -9,6 +9,7 @@ export default function Card({
   summary,
   rating: { average },
   network,
+  image,
 }) {
   const convertDate = (date) => {
     const [_year, _month, _day] = date.split("-");
@@ -52,10 +53,7 @@ export default function Card({
           </div>
           <div class="card_right">
             <div class="img_container">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/en/f/ff/MI_%E2%80%93_Fallout.jpg"
-                alt=""
-              />
+              {image?.medium && <img src={image.medium} alt={name} />}
             </div>
           </div>
         </div>
