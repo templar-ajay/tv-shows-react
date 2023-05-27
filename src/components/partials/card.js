@@ -1,5 +1,6 @@
 import React from "react";
 import Para from "./para";
+import { useNavigate } from "react-router";
 export default function Card({
   id,
   name,
@@ -12,6 +13,7 @@ export default function Card({
   network,
   image,
 }) {
+  const navigate = useNavigate();
   const convertDate = (date) => {
     const [_year, _month, _day] = date.split("-");
     function english_ordinal_suffix(date) {
@@ -40,8 +42,7 @@ export default function Card({
             <div className="card_details">
               <h1
                 onClick={() => {
-                  window.location.href =
-                    `http://localhost:3000/tv-shows/details/` + id;
+                  navigate("/tv-shows/details/" + id);
                 }}
               >
                 {name}
