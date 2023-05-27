@@ -7,7 +7,7 @@ export default function TVShows() {
   return (
     <>
       <SearchAppBar setResults={setResults} />
-      <div className="container">
+      <div id="shows-list">
         {results.length ? (
           results.map(({ show }) => (
             <Card key={show.id} children={show.summary} {...show} />

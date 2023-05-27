@@ -1,3 +1,7 @@
 export default function noPage() {
-  return <>page not found</>;
+  return (
+    <>
+      <div>page not found</div>
+    </>
+  );
 }

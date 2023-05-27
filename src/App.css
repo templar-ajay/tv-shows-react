@@ -223,9 +223,8 @@ button:hover {
   justify-content: space-evenly;
   align-items: center;
 }
-
-
-
-
+#shows-list h1{
+	cursor: pointer;
+}
 
 
