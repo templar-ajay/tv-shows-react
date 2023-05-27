@@ -116,9 +116,9 @@ body {
 .disc {
 	font-weight: 100;
 	line-height: 27px;
-  /* this is not proper fix */
-  /* height: 100px; */
-  /* overflow: hidden; */
+	/* this is not proper fix */
+	height: 100px; 
+	overflow: hidden;
 }
 
 a {
